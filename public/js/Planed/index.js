@@ -33,7 +33,13 @@ function Planed(){
         imLeft:document.createElement('img'),
         imRight:document.createElement('img')
     }
-    const way='../src/icons/'
+    const but='/icons/but.png'
+    const cet='/icons/center.png'
+    const lef='/icons/left.png'
+    const mid='/icons/mid.png'
+    const rig='/icons/right.png'
+    const top='/icons/top.png'
+
     const mt='btn white radM pdP som fntP'
     const al='btn radP larAl'
     const bvr='btnn white fntP pdMin'
@@ -77,12 +83,12 @@ function Planed(){
     setAtr(bt.btRight ,'class',al)
     setAtr(bt.btTop,'class',al)
 
-    setAtr(img.imBut,'src',way+'but.png')
-    setAtr(img.imMid,'src',way+'mid.png')
-    setAtr(img.imTop,'src',way+'top.png')
-    setAtr(img.imLeft,'src',way+'left.png')
-    setAtr(img.imCent,'src',way+'center.png')
-    setAtr(img.imRight,'src',way+'right.png')
+    setAtr(img.imBut,'src',but)
+    setAtr(img.imMid,'src',mid)
+    setAtr(img.imTop,'src',top)
+    setAtr(img.imLeft,'src',lef)
+    setAtr(img.imCent,'src',cet)
+    setAtr(img.imRight,'src',rig)
     
     child(dvM.dv3,btM.bt1)
     child(dvM.dv3,btM.bt2)
@@ -113,10 +119,12 @@ function Planed(){
     child(dvAl,bt.btCent)
     child(dvAl,bt.btRight)
 
-    child(header,Back())
+    child(header,Back('/Plan'))
     child(header,dvAl)
     child(header,dvPl)
 
     child(div,header)
     return div
 }
+
+document.getElementById('root').appendChild(Planed())

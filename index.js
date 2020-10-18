@@ -27,31 +27,41 @@ function createWindow(){
 app.whenReady().then(createWindow)
 
 apl.get('/Busca',(req,res)=>{
-    res.sendFile(__dirname+"/src/pages/Busca/index.html")
+    res.sendFile(__dirname+"/pages/Busca/index.html")
 })
 
 apl.get('/BuscaCard',(req,res)=>{
-    res.sendFile(__dirname+"/src/pages/BuscaCard/index.html")
+    res.sendFile(__dirname+"/pages/BuscaCard/index.html")
 })
 
 apl.get('/CtCria',(req,res)=>{
-    res.sendFile(__dirname+"/src/pages/CreateCard/index.html")
+    res.sendFile(__dirname+"/pages/CreateCard/index.html")
+})
+
+apl.post('/CtCria',(req,res)=>{
+    const data=req.body
+    console.log(data);
 })
 
 apl.get('/GpCria',(req,res)=>{
-    res.sendFile(__dirname+"/src/pages/CreateGroup/index.html")
+    res.sendFile(__dirname+"/pages/CreateGroup/index.html")
+})
+
+apl.post('/GpCria',(req,res)=>{
+    const data=req.body
+    console.log(data);
 })
 
 apl.get('/',(req,res)=>{
-    res.sendFile(__dirname+"/src/pages/Home/index.html")
+    res.sendFile(__dirname+"/pages/Home/index.html")
 })
 
 apl.get('/Plan',(req,res)=>{
-    res.sendFile(__dirname+"/src/pages/Plan/index.html")
+    res.sendFile(__dirname+"/pages/Plan/index.html")
 })
 
 apl.get('/Planed',(req,res)=>{
-    res.sendFile(__dirname+"/src/pages/Planed/index.html")
+    res.sendFile(__dirname+"/pages/Planed/index.html")
 })
 
 
