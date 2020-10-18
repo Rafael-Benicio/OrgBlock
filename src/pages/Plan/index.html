@@ -225,6 +225,14 @@
             text-decoration: none;
         }
 
+        .als{
+        
+        }
+
+        .dec{
+            text-decoration: none;
+        }
+
     </style>
 </head>
 <body>
@@ -241,70 +249,33 @@
             va.appendChild(apnd)
         }
 
-        function Clear(){
-            document.getElementById('rem').remove()
-        }
-
-        function BtRota(nova){
-            if(route!==nova){
-                Clear()
-                console.log('chamou');
-            }
-            route=nova
-            console.log(route);
-            App()
-        }
-
-        function Ent1(){
-            document.getElementById('Menu1').style.visibility="visible"
-        }
-
-        function Out1(){
-            document.getElementById('Menu1').style.visibility="hidden"
-        }
-
-        function Ent2(){
-            document.getElementById('Menu2').style.visibility="visible"
-        }
-
-        function Out2(){
-            document.getElementById('Menu2').style.visibility="hidden"
-        }
-
         function Back(way){
             const button=document.createElement('a')
             button.innerHTML="<<"
-            setAtr(button,'class','btn dec radM pdM white backPos fntM')
-            setAtr(button,'href',way)
+            setAtr(button,'class','btn radM dec pdM white backPos fntM')
+            setAtr(button,'href', way)
 
             return button
         }        
       
-        function BuscaCards(){
-            const Groups=['rafael','benicio']
+        function Plan(){
             const div=document.createElement('div')
-            const dvGroup=document.createElement('div')
+            const button=document.createElement('a')
+            const header=document.createElement('header')
 
-            Groups.map(car=>{
-                const dv=document.createElement('div')
-                const button=document.createElement('a')
-                button.innerHTML=car
-                setAtr(dv,'class','btn radM just cdTam mrgG')
-                setAtr(button,'class','pdMax white dec')
-                setAtr(button,'href','/Plan')
-                dv.appendChild(button)
-                return dvGroup.appendChild(dv)
-            })
-
+            button.innerHTML="/"
+            
             setAtr(div,'id','rem')
-            setAtr(dvGroup,'class','lisCards')
+            setAtr(button,'class','btn radM dec white pdM edPlan')
+            setAtr(button,'href','/Planed')
 
-            child(div,Back('Busca'))
-            child(div,dvGroup)
+            child(header,Back('/BuscaCard'))
+            child(header,button)
+            child(div,header)
             return div
         }
 
-        document.getElementById('root').appendChild(BuscaCards())
+        document.getElementById('root').appendChild(Plan())
 
     </script>
 </html>

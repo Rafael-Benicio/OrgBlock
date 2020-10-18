@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0%;
+            margin: 0%;
+            outline: 0ch;
+            box-sizing: border-box;
+        }
+
+        body{
+            background-color: indigo;
+        }
+
+        #root{
+            width: 100vw;
+            width: 100vh;
+        }
+
+        .radM{
+            border-radius: 8px;
+        }
+
+        .radP{
+            border-radius: 4px;
+        }
+
+
+        .pdMin{
+            padding: 4px;
+        }
+
+        .pdP{
+            padding: 8px;
+        }
+
+        .pdM{
+            padding: 16px;
+        }
+
+        .pdG{
+            padding: 24px;
+        }
+
+        .pdMax{
+            padding: 120px;
+        }
+
+        .fntP{
+            font-size: 16px;
+        }
+
+        .fntM{
+            font-size: 24px;
+        }
+
+        .fntG{
+            font-size: 32px;
+        }
+
+        .mrgP{
+            margin: 16px;
+        }
+
+        .mrgM{
+            margin: 24px;
+        }
+
+        .mrgG{
+            margin: 32px;
+        }
+
+        .form{
+            margin-top: 200px;
+            margin-left: 50px;
+
+        }
+
+        .mrgInput{
+            margin-left: 32px;
+        }
+
+        .row{
+            display: block;
+        }
+
+        .just{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn{
+            background-color: mediumorchid;
+            border: 0;
+            font-size: 24px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn:hover{
+            background-color: darkorchid;
+
+        }
+
+        .white{
+            color: white;
+        }
+
+        #rem .bus{
+            margin-left: 80px;
+            margin-top: 80px;
+
+        }
+
+        #rem .cr{
+            margin-left: 80px;
+            margin-top: 100px;
+
+        }
+
+        #rem .cr button{
+            margin-right: 40px;
+        }
+
+        .backPos{
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+
+        .cdTam{
+            width: 300px;
+            height: 300px;
+        }
+
+        .lisCards{
+            position: absolute;
+            top: 150px;
+            display: grid;
+            grid-template-columns:repeat(5,1fr) ;
+        }
+
+        .lisCards .cdTam:first-child{
+            margin-left: 47px;
+        }
+
+        .edPlan{
+            position: absolute;
+            top: 30px;
+            left: 110px;
+            transition: 0.2s;
+        }
+
+        .edPlan:hover{
+            color: indigo;
+        }
+
+        .hea{
+            width: 100vw;
+            height: 120px;
+            position: fixed;
+        }
+
+        .bor{
+            border: 1px solid white;
+        }
+
+        .larAl{
+            width: 40px;
+            height: 40px;
+        }
+
+        .dvAl{
+            width: 140px;
+            height: 100px;
+            display: grid;
+            grid-template-columns:repeat(3,1fr) ; 
+        }
+
+        .dvPl{
+            width: 25px;
+            display: grid;
+            grid-template-columns:repeat(1,1fr) ; 
+            gap: 10px;
+            position: absolute;
+            right:0px;
+            margin-right: 180px;
+        }
+
+        .bgP{
+            background-color: indigo;
+        }
+
+        #lss{
+            width: 32px;
+        }
+
+        .som{
+            margin-left: 5px;
+        }
+
+        .btnn{
+            background-color: indigo;
+            border: 0;
+            cursor: pointer;
+            width: 75px;
+            transition: 0.2s;
+        }
+
+        .btnn:hover{
+            background-color: mediumorchid;
+
+        }
+
+        #Menu1,#Menu2{
+            visibility: hidden;
+        }
+
+        .dec{
+            text-decoration: none;
+        }
+
+        .als{
+        
+        }
+
+        .dec{
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="root">
+
+    </div>
+</body>
+    <script>
+        function setAtr(name, atr, at){
+            name.setAttribute(atr,at)
+        }
+
+        function child(va, apnd){
+            va.appendChild(apnd)
+        }
+
+        function Back(way){
+            const button=document.createElement('a')
+            button.innerHTML="<<"
+            setAtr(button,'class','btn radM dec pdM white backPos fntM')
+            setAtr(button,'href','/Plan')     
+            return button
+        }        
+
+        function Ent1(){
+            document.getElementById('Menu1').style.visibility="visible"
+        }
+
+        function Out1(){
+            document.getElementById('Menu1').style.visibility="hidden"
+        }
+
+        function Ent2(){
+            document.getElementById('Menu2').style.visibility="visible"
+        }
+
+        function Out2(){
+            document.getElementById('Menu2').style.visibility="hidden"
+        }
+      
+        function Planed(){
+            const div=document.createElement('div')
+            const dvAl=document.createElement('div')
+            const dvPl=document.createElement('div')
+            const header=document.createElement('header')
+            const plus=document.createElement('button')
+            const less=document.createElement('button')
+            const dvM={
+                dv1:document.createElement('div'),
+                dv2:document.createElement('div'),
+                dv3:document.createElement('div'),
+                dv4:document.createElement('div')
+            }
+            const btM={
+                bt1:document.createElement('button'),
+                bt2:document.createElement('button'),
+                bt3:document.createElement('button'),
+                bt4:document.createElement('button')
+            }
+            const bt={
+                btTop:document.createElement('button'),
+                btMid:document.createElement('button'),
+                btBut:document.createElement('button'),
+                btLeft:document.createElement('button'),
+                btCent:document.createElement('button'),
+                btRight:document.createElement('button')
+            }
+            const img={
+                imMid:document.createElement('img'),
+                imTop:document.createElement('img'),
+                imBut:document.createElement('img'),
+                imCent:document.createElement('img'),
+                imLeft:document.createElement('img'),
+                imRight:document.createElement('img')
+            }
+            const but='/icons/but.png'
+            const cet='/icons/center.png'
+            const lef='/icons/left.png'
+            const mid='/icons/mid.png'
+            const rig='/icons/right.png'
+            const top='/icons/top.png'
+
+            const mt='btn white radM pdP som fntP'
+            const al='btn radP larAl'
+            const bvr='btnn white fntP pdMin'
+
+            plus.innerHTML="+"
+            less.innerHTML="-"
+            btM.bt1.innerHTML="Add Row"
+            btM.bt2.innerHTML="Add Coll"
+            btM.bt3.innerHTML="Del Row"
+            btM.bt4.innerHTML="Del Coll"
+
+            setAtr(div,'id','rem')
+            setAtr(dvAl,'class','dvAl')
+            setAtr(dvPl,'class','dvPl')
+            setAtr(header,'class','just hea')
+
+            setAtr(plus,'class',mt)
+            setAtr(plus,'onmouseover','Ent1()')
+            setAtr(less,'class',mt)
+            setAtr(less,'onmouseover','Ent2()')
+            setAtr(less,'id','lss')
+
+            setAtr(btM.bt1,'class',bvr)
+            setAtr(btM.bt2,'class',bvr)
+            setAtr(btM.bt3,'class',bvr)
+            setAtr(btM.bt4,'class', bvr)
+
+            setAtr(dvM.dv1,'class','just')
+            setAtr(dvM.dv2,'class','just')
+            setAtr(dvM.dv3,'class','just')
+            setAtr(dvM.dv4,'class','just')
+            setAtr(dvM.dv3,'id','Menu1')
+            setAtr(dvM.dv3,'onmouseout','Out1()')
+            setAtr(dvM.dv4,'id','Menu2')
+            setAtr(dvM.dv4,'onmouseout','Out2()')
+
+            setAtr(bt.btBut ,'class',al)
+            setAtr(bt.btCent ,'class',al)
+            setAtr(bt.btLeft ,'class',al)
+            setAtr(bt.btMid ,'class',al)
+            setAtr(bt.btRight ,'class',al)
+            setAtr(bt.btTop,'class',al)
+
+            setAtr(img.imBut,'src',but)
+            setAtr(img.imMid,'src',mid)
+            setAtr(img.imTop,'src',top)
+            setAtr(img.imLeft,'src',lef)
+            setAtr(img.imCent,'src',cet)
+            setAtr(img.imRight,'src',rig)
+            
+            child(dvM.dv3,btM.bt1)
+            child(dvM.dv3,btM.bt2)
+
+            child(dvM.dv4,btM.bt3)
+            child(dvM.dv4,btM.bt4)
+            
+            child(dvM.dv1,dvM.dv3)
+            child(dvM.dv2,dvM.dv4)
+
+            child(dvM.dv1,plus)
+            child(dvM.dv2,less)
+
+            child(dvPl,dvM.dv1)
+            child(dvPl,dvM.dv2)
+
+            child(bt.btTop,img.imTop)
+            child(bt.btMid,img.imMid)
+            child(bt.btBut,img.imBut)
+            child(bt.btLeft,img.imLeft)
+            child(bt.btCent,img.imCent)
+            child(bt.btRight,img.imRight)
+
+            child(dvAl,bt.btTop)
+            child(dvAl,bt.btMid)
+            child(dvAl,bt.btBut)
+            child(dvAl,bt.btLeft)
+            child(dvAl,bt.btCent)
+            child(dvAl,bt.btRight)
+
+            child(header,Back('/Plan'))
+            child(header,dvAl)
+            child(header,dvPl)
+
+            child(div,header)
+            return div
+        }
+
+        document.getElementById('root').appendChild(Planed())
+
+    </script>
+</html>
