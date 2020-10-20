@@ -41,7 +41,7 @@ routes.post('/GpCria',(req,res)=>{
         }
     })
     
-    if(tr){
+    if(tr && grupo!='' && grupo[0]!=' '){
           db.get('database').push({
               grupo,id:nanoid()
           }).write()
@@ -49,13 +49,20 @@ routes.post('/GpCria',(req,res)=>{
     
 })
 
-routes.get('/',(req,res)=>{
-    res.sendFile(__dirname+"/pages/Home/index.html")
+routes.delete('/GpCria/:id',(req,res)=>{
+    const {id}=req.params
+    db.get('database')
+    .remove({ id: id })
+    .write()
 })
 
 routes.get('/passGrupo',(req,res)=>{
     const gp=db.get('database').value()
     res.json(gp)
+})
+
+routes.get('/',(req,res)=>{
+    res.sendFile(__dirname+"/pages/Home/index.html")
 })
 
 routes.get('/Plan',(req,res)=>{

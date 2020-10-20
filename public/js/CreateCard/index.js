@@ -3,7 +3,11 @@ function CreateCard(){
     const form=document.createElement('form')
     const NGroup=document.createElement('p')
     const NCard=document.createElement('p')
+
+    const Select=tagN('selection')
     const InputG=document.createElement('input')
+    const Datalist=tagN('datalist')
+
     const InputC=document.createElement('input')
     const button=document.createElement('button')
     const prop="white fntG mrgG"
@@ -12,6 +16,7 @@ function CreateCard(){
     NGroup.innerHTML="Nome do Grupo"
     NCard.innerHTML="Nome do Cartão"
     button.innerHTML="Criar Cartão"
+
     setAtr(form,'class','form')
     setAtr(form,'action','/CtCria')
     setAtr(form,'method','POST')
@@ -19,7 +24,9 @@ function CreateCard(){
     setAtr(NGroup,'class',prop)
     setAtr(NCard,'class',prop)
     setAtr(InputC,'class',int)
+
     setAtr(InputG,'class',int)
+
     setAtr(button,'class','btn radM white pdP mrgInput mrgG')
 
     setAtr(InputC,'maxLength','50')
@@ -27,13 +34,18 @@ function CreateCard(){
 
     setAtr(InputC,'name','newCard')
     setAtr(InputG,'name','newGroup')
+    setAtr(InputG,'list','opt')
+
+    setAtr(Datalist,'id','opt')
 
     setAtr(button,'type','submit')
     
     child(div,Back('/')) 
     child(div,form)
     child(form,NGroup)
-    child(form,InputG)
+    child(form,Select)
+    child(Select,InputG)
+    child(Select,Datalist)
     child(form,NCard)
     child(form,InputC)
     child(form,button)

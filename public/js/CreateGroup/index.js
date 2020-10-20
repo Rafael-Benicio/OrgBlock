@@ -10,10 +10,10 @@ function CreateGroup(){
     button.innerHTML="Criar Grupo"
     setAtr(form,'class','form')
     setAtr(form,'action','/GpCria')
-    setAtr(form,'method','POST')
+    setAtr(form,'onsubmit','CriaNovoGrupo()')
     setAtr(NGroup,'class',prop)
     setAtr(InputG,'class',int)
-    setAtr(InputG,'name','nomeGrupo')
+    setAtr(InputG,'id','nomeGrupo')
     setAtr(button,'class','btn radM white pdP mrgInput mrgG')
     setAtr(InputG,'maxLength','50')
     setAtr(button,'type','submit')

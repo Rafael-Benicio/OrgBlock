@@ -13,22 +13,5 @@
 </body>
     <script src="/Utility/index.js"></script>
     <script src="/js/CreateGroup/index.js"></script>
-    <script>
-        var v
-        const api=require('./services/api')
-        api.get('/passGrupo').then(response=>{
-            const res=response.data
-            const dv=tagN('div')
-            
-            res.map(gp=>{
-                const p=tagN('p')
-                setAtr(p,'class','white fntM')
-                p.innerHTML=gp.grupo
-                return child(dv,p)
-            })
-
-            child(document.getElementById('root'),dv)
-            
-        })
-    </script>
+    <script src="/js/CreateGroup/res.js"></script>
 </html>
