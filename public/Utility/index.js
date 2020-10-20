@@ -29,3 +29,7 @@ function Ent2(){
 function Out2(){
     document.getElementById('Menu2').style.visibility="hidden"
 }
+
+function tagN(tag){
+    return document.createElement(tag)
+}

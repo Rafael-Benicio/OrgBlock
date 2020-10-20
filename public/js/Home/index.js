@@ -33,4 +33,4 @@ function Home(){
     return res;
 }
 
-        document.getElementById('root').appendChild(Home())
+document.getElementById('root').appendChild(Home())

@@ -1,16 +1,17 @@
 const { app ,BrowserWindow , globalShortcut} = require('electron')
-const express=require('express')
-const apl=express()
-const cors=require('cors')
+
 const bodyParser=require('body-parser')
+const express=require('express')
+const routes=require('./routes')
+const cors=require('cors')
+const apl=express()
 
 apl.use(express.static(__dirname+'/public'));
 
 
 apl.use(cors())
-apl.use(bodyParser.urlencoded({extended:false}))
-apl.use(bodyParser.json())
-// apl.use(express.json())
+apl.use(express.urlencoded({extended:false}))
+apl.use(express.json())
 
 function createWindow(){
     const win =new BrowserWindow({
@@ -26,43 +27,6 @@ function createWindow(){
 
 app.whenReady().then(createWindow)
 
-apl.get('/Busca',(req,res)=>{
-    res.sendFile(__dirname+"/pages/Busca/index.html")
-})
-
-apl.get('/BuscaCard',(req,res)=>{
-    res.sendFile(__dirname+"/pages/BuscaCard/index.html")
-})
-
-apl.get('/CtCria',(req,res)=>{
-    res.sendFile(__dirname+"/pages/CreateCard/index.html")
-})
-
-apl.post('/CtCria',(req,res)=>{
-    const data=req.body
-    console.log(data);
-})
-
-apl.get('/GpCria',(req,res)=>{
-    res.sendFile(__dirname+"/pages/CreateGroup/index.html")
-})
-
-apl.post('/GpCria',(req,res)=>{
-    const data=req.body
-    console.log(data);
-})
-
-apl.get('/',(req,res)=>{
-    res.sendFile(__dirname+"/pages/Home/index.html")
-})
-
-apl.get('/Plan',(req,res)=>{
-    res.sendFile(__dirname+"/pages/Plan/index.html")
-})
-
-apl.get('/Planed',(req,res)=>{
-    res.sendFile(__dirname+"/pages/Planed/index.html")
-})
-
+apl.use(routes)
 
 apl.listen(8888)
