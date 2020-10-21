@@ -45,7 +45,6 @@ function delet(e){
             }  
 })})}
 
-
 function reload(){
     document.location.reload(true);
 }
@@ -68,3 +67,37 @@ async function CriaNovoGrupo(){
     }
 
 }
+
+async function CriaNovoCard(){
+    const api=require('./services/api')
+    const newGrupo=document.getElementById('inpG').value
+    const newCard=document.getElementById('inpC').value
+
+    const data={
+        newGrupo,
+        newCard
+    }
+    console.log(data);
+    try {
+        const response= await api.post('/CtCria',data)
+    } catch(err){ 
+        alert(`Ouve um erro, por favor, verifique o grupo`)
+        
+    }
+
+}
+
+async function PassaGrupo(grupo){
+    const api=require('./services/api')
+    api.get('/passGrupo').then(response=>{
+        const res=response.data
+        const Groups=res.map((gp)=>{
+            return gp.grupo
+        })
+
+        const gp=Groups.map((gp,i)=>{
+            if(i===grupo){
+                api.post('/Busca', {nomeG:gp})
+            }
+        })
+})}

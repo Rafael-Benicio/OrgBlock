@@ -19,13 +19,16 @@ function CreateCard(){
 
     setAtr(form,'class','form')
     setAtr(form,'action','/CtCria')
-    setAtr(form,'method','POST')
+    setAtr(form,'onsubmit',' CriaNovoCard()')
 
     setAtr(NGroup,'class',prop)
     setAtr(NCard,'class',prop)
     setAtr(InputC,'class',int)
+    setAtr(InputC,'id','inpC')
+
 
     setAtr(InputG,'class',int)
+    setAtr(InputG,'id','inpG')
 
     setAtr(button,'class','btn radM white pdP mrgInput mrgG')
 

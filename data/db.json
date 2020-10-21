@@ -1,20 +1,23 @@
 {
   "database": [
     {
-      "grupo": "Segundo",
-      "id": "yCl_f3dRcfulr9C5a4Nq-"
+      "id": "KfEhQ1B8k5pRtaoNXr6Kh",
+      "grupo": "Grupo",
+      "card": []
     },
     {
-      "grupo": "Primeiro",
-      "id": "d0Ek81rNBlqaHpXFA4Lmn"
-    },
-    {
-      "grupo": "Terceiro",
-      "id": "ex2SaHQ73QRWVokTZ5-31"
-    },
-    {
-      "grupo": "Quarto",
-      "id": "L8hwZoVIB0QRkWAlLyISL"
+      "id": "FkLxmLmU4cv-49Usq_IYj",
+      "grupo": "Grupo 2",
+      "card": [
+        {
+          "NomeCard": "Card 1",
+          "list": []
+        },
+        {
+          "NomeCard": "Card 2",
+          "list": []
+        }
+      ]
     }
   ]
 }

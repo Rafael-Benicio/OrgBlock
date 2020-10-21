@@ -136,11 +136,12 @@ body{
     top: 150px;
     display: grid;
     grid-template-columns:repeat(5,1fr) ;
-}
-
-.lisCards .cdTam:first-child{
     margin-left: 47px;
 }
+
+/* .lisCards .cdTam:first-child{
+    margin-left: 47px;
+} */
 
 .edPlan{
     position: absolute;
