@@ -1,21 +1,21 @@
 {
   "database": [
     {
-      "id": "KfEhQ1B8k5pRtaoNXr6Kh",
-      "grupo": "Grupo",
-      "card": []
-    },
-    {
-      "id": "FkLxmLmU4cv-49Usq_IYj",
-      "grupo": "Grupo 2",
+      "id": "87LiXYFPsdsTNjoBqgblG",
+      "grupo": "Rafael",
       "card": [
         {
-          "NomeCard": "Card 1",
-          "list": []
-        },
-        {
-          "NomeCard": "Card 2",
-          "list": []
+          "NomeCard": "Benicio",
+          "list": [
+            [
+              "One",
+              ""
+            ],
+            [
+              "A",
+              ""
+            ]
+          ]
         }
       ]
     }

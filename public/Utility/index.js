@@ -87,6 +87,7 @@ async function CriaNovoCard(){
 
 }
 
+
 async function PassaGrupo(grupo){
     const api=require('./services/api')
     api.get('/passGrupo').then(response=>{
@@ -101,3 +102,154 @@ async function PassaGrupo(grupo){
             }
         })
 })}
+
+
+async function PassaLista(card){
+    console.log(card);
+    const api=require('./services/api')
+    api.post('/BuscaCard', {indexCard:card})
+}
+
+function GetList(){
+    const api=require('./services/api')
+    api.get('/passList').then(response=>{
+        const res=response.data
+        console.log(res);
+    })
+}
+
+function GeText(){
+    const root=document.getElementById('root')
+    const api=require('./services/api')
+
+    api.get('/passList').then(response=>{
+        const res=response.data
+        const dv=tagN('div')
+
+        setAtr(dv,'class','heaText pdP bor Pad')
+        console.log(res);
+        res.map(ne=>{
+            const div=tagN('div')
+            ne.map(te=>{
+                const text=tagN('textarea')
+                text.innerHTML=te
+                setAtr(text,'class','infText pdMin')
+                child(div,text)
+            })
+            setAtr(div,'class','leng')
+            child(dv,div)
+        })
+
+        child(root,dv)       
+})}
+
+function Delcoll(){
+    const api=require('./services/api')
+    const divText=document.querySelector('.leng')
+    const text=document.querySelectorAll('.infText')
+    const nodeDiv=document.querySelector('.Pad').childNodes.length
+    const nodeDivText=divText.childNodes.length
+    let valor=[]
+    let cont=0
+
+    for(let i=0;i<nodeDiv;i++){
+        valor.push([])
+    }
+
+    for(let i=0;i<nodeDiv;i++){
+        for(let e=0;e<nodeDivText;e++){
+            valor[i].push(text[cont].value)
+            cont+=1
+        }   
+    }
+
+    for(let i=0;i<nodeDiv;i++){
+        for(let e=0;e<nodeDivText;e++){
+            valor[i].length=nodeDivText-1
+            cont+=1
+        }   
+    }
+
+    console.log(valor);
+
+    if(valor[0].length==0){
+        console.log('oi');
+    }else{
+        api.post('/delColl',{newList:valor})
+    }
+    
+    reload()
+}
+
+function AddColl(){
+    const api=require('./services/api')
+    const divText=document.querySelector('.leng')
+    const text=document.querySelectorAll('.infText')
+    const nodeDiv=document.querySelector('.Pad').childNodes.length
+    const nodeDivText=divText.childNodes.length
+    let valor=[]
+    let cont=0
+
+    for(let i=0;i<nodeDiv;i++){
+        valor.push([])
+    }
+
+    for(let i=0;i<nodeDiv;i++){
+        for(let e=0;e<nodeDivText;e++){
+            valor[i].push(text[cont].value)
+            cont+=1
+        }   
+    }
+
+    for(let i=0;i<nodeDiv;i++){
+        for(let e=0;e<nodeDivText;e++){
+            valor[i].push("")
+        }   
+    }
+
+    console.log(valor);
+
+    api.post('/addColl',{newList:valor})
+
+    reload()
+}
+
+function AddRow(){
+    const api=require('./services/api')
+    const divText=document.querySelector('.leng')
+    const text=document.querySelectorAll('.infText')
+    const nodeDiv=document.querySelector('.Pad').childNodes.length
+    const nodeDivText=divText.childNodes.length
+    let valor=[]
+    let cont=0
+
+    for(let i=0;i<nodeDiv;i++){
+        valor.push([])
+    }
+
+    for(let i=0;i<nodeDiv;i++){
+        for(let e=0;e<nodeDivText;e++){
+            valor[i].push(text[cont].value)
+            cont+=1
+        }   
+    }
+
+    valor.length=1
+    
+    console.log(valor);
+}
+
+
+addEventListener('keydown',(e)=>{
+    const key=e.keyCode
+    if(key==13){
+        AddColl()
+    }
+    if(key==8){
+        Delcoll()
+    }
+    if(key==187){
+        AddRow()
+    }
+    console.log(key);
+})

@@ -8,7 +8,7 @@ function Plan(){
     setAtr(div,'id','rem')
     setAtr(button,'class','btn radM dec white pdM edPlan')
     setAtr(button,'href','/Planed')
-
+    GetList()
     child(header,Back('/BuscaCard'))
     child(header,button)
     child(div,header)

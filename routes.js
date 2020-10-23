@@ -4,6 +4,7 @@ const Lowdb = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const routes= express.Router()
 let buscaCard=''
+let buscaList=''
 
 const db = Lowdb(new FileSync('./data/db.json'))
 
@@ -67,16 +68,6 @@ routes.delete('/GpCria/:id',(req,res)=>{
     .write()
 })
 
-routes.get('/passGrupo',(req,res)=>{
-    const gp=db.get('database').value()
-    res.json(gp)
-})
-
-routes.get('/passCard',(req,res)=>{
-    const cd=db.get('database').find({grupo:buscaCard}).get('card').value()
-    res.json(cd)
-})
-
 routes.get('/',(req,res)=>{
     res.sendFile(__dirname+"/pages/Home/index.html")
 })
@@ -101,5 +92,60 @@ routes.post('/Busca',(req,res)=>{
 routes.get('/BuscaCard',(req,res)=>{
     res.sendFile(__dirname+"/pages/BuscaCard/index.html")
 })
+
+routes.post('/BuscaCard',(req,res)=>{
+    buscaList=req.body.indexCard
+    console.log(buscaList);
+    const data=db.get('database').find({grupo:buscaCard}).get('card').value()
+    data.map((cd,i)=>{
+        if(i===buscaList){
+            buscaList=cd.NomeCard
+        }
+    })
+    console.log(buscaList);
+})
+
+routes.get('/passList',(req,res)=>{
+    const data=db.get('database')
+    .find({grupo:buscaCard})
+    .get('card')
+    .find({NomeCard:buscaList})
+    .get('list')
+    .value()
+    res.json(data)
+})
+
+routes.get('/passGrupo',(req,res)=>{
+    const gp=db.get('database').value()
+    res.json(gp)
+})
+
+routes.get('/passCard',(req,res)=>{
+    const cd=db.get('database').find({grupo:buscaCard}).get('card').value()
+    res.json(cd)
+})
+
+routes.post('/delColl',(req,res)=>{
+    const data=req.body.newList
+    console.log(data);
+    db.get('database')
+    .find({ grupo:buscaCard})
+    .get('card')
+    .find({NomeCard:buscaList})
+    .assign({ list: data})
+    .write()
+})
+
+routes.post('/addColl',(req,res)=>{
+    const data=req.body.newList
+    console.log(data);
+    db.get('database')
+    .find({ grupo:buscaCard})
+    .get('card')
+    .find({NomeCard:buscaList})
+    .assign({ list: data})
+    .write()
+})
+
 
 module.exports=routes

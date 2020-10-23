@@ -55,6 +55,10 @@ body{
     font-size: 32px;
 }
 
+.mrgMin{
+    margin: 1px;
+}
+
 .mrgP{
     margin: 16px;
 }
@@ -152,6 +156,11 @@ body{
 
 .edPlan:hover{
     color: indigo;
+}
+
+.heaText{
+    position: relative;
+    top: 120px;
 }
 
 .hea{

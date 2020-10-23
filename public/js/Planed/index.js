@@ -1,4 +1,5 @@
 function Planed(){
+    const root=document.getElementById('root')
     const div=document.createElement('div')
     const dvAl=document.createElement('div')
     const dvPl=document.createElement('div')
@@ -66,6 +67,8 @@ function Planed(){
     setAtr(btM.bt2,'class',bvr)
     setAtr(btM.bt3,'class',bvr)
     setAtr(btM.bt4,'class', bvr)
+    setAtr(btM.bt4,'onclick','Delcoll()')
+
 
     setAtr(dvM.dv1,'class','just')
     setAtr(dvM.dv2,'class','just')
@@ -124,7 +127,9 @@ function Planed(){
     child(header,dvPl)
 
     child(div,header)
-    return div
+    child(root,div)
 }
 
-document.getElementById('root').appendChild(Planed())
+GeText()
+Planed()
+
