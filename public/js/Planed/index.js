@@ -64,10 +64,13 @@ function Planed(){
     setAtr(less,'id','lss')
 
     setAtr(btM.bt1,'class',bvr)
+    setAtr(btM.bt1,'onclick','AddRow()')
     setAtr(btM.bt2,'class',bvr)
+    setAtr(btM.bt2,'onclick','AddColl()')
     setAtr(btM.bt3,'class',bvr)
+    setAtr(btM.bt3,'onclick','DellRow()')
     setAtr(btM.bt4,'class', bvr)
-    setAtr(btM.bt4,'onclick','Delcoll()')
+    setAtr(btM.bt4,'onclick','DellColl()')
 
 
     setAtr(dvM.dv1,'class','just')

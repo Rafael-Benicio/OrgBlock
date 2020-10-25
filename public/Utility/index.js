@@ -127,7 +127,7 @@ function GeText(){
         const dv=tagN('div')
 
         setAtr(dv,'class','heaText pdP bor Pad')
-        console.log(res);
+        
         res.map(ne=>{
             const div=tagN('div')
             ne.map(te=>{
@@ -143,7 +143,7 @@ function GeText(){
         child(root,dv)       
 })}
 
-function Delcoll(){
+function DellColl(){
     const api=require('./services/api')
     const divText=document.querySelector('.leng')
     const text=document.querySelectorAll('.infText')
@@ -201,8 +201,10 @@ function AddColl(){
         }   
     }
 
+    console.log(nodeDivText);
+
     for(let i=0;i<nodeDiv;i++){
-        for(let e=0;e<nodeDivText;e++){
+        for(let e=0;e<1;e++){
             valor[i].push("")
         }   
     }
@@ -234,9 +236,52 @@ function AddRow(){
         }   
     }
 
-    valor.length=1
+    valor.push([])
+
+    for(let e=0;e<nodeDivText;e++){
+        valor[valor.length-1].push("")
+    }   
     
     console.log(valor);
+
+    api.post('/addRow',{newList:valor})    
+
+    reload()
+}
+
+function DellRow(){
+    const api=require('./services/api')
+    const divText=document.querySelector('.leng')
+    const text=document.querySelectorAll('.infText')
+    const nodeDiv=document.querySelector('.Pad').childNodes.length
+    const nodeDivText=divText.childNodes.length
+    let valor=[]
+    let cont=0
+
+    for(let i=0;i<nodeDiv;i++){
+        valor.push([])
+    }
+
+    for(let i=0;i<nodeDiv;i++){
+        for(let e=0;e<nodeDivText;e++){
+            valor[i].push(text[cont].value)
+            cont+=1
+        }   
+    }
+
+    valor.length= valor.length-1
+
+    console.log(valor);
+
+    
+    if(valor.length==0){
+        console.log('oi');
+    }else{
+        api.post('/dellRow',{newList:valor})
+    }
+
+    reload()
+
 }
 
 
@@ -246,10 +291,13 @@ addEventListener('keydown',(e)=>{
         AddColl()
     }
     if(key==8){
-        Delcoll()
+        DellColl()
     }
     if(key==187){
         AddRow()
+    }
+    if(key==189){
+        DellRow()
     }
     console.log(key);
 })

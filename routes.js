@@ -147,5 +147,27 @@ routes.post('/addColl',(req,res)=>{
     .write()
 })
 
+routes.post('/addRow',(req,res)=>{
+    const data=req.body.newList
+    console.log(data);
+    db.get('database')
+    .find({ grupo:buscaCard})
+    .get('card')
+    .find({NomeCard:buscaList})
+    .assign({ list: data})
+    .write()
+})
+
+routes.post('/dellRow',(req,res)=>{
+    const data=req.body.newList
+    console.log(data);
+    db.get('database')
+    .find({ grupo:buscaCard})
+    .get('card')
+    .find({NomeCard:buscaList})
+    .assign({ list: data})
+    .write()
+})
+
 
 module.exports=routes
